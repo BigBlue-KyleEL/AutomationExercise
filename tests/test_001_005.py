@@ -68,6 +68,8 @@ def test_AE004(browserInstance):
     driver.find_element(*accountInfo_Page.logout_btn).click()
     home_Page.wait_for_element_to_appear(home_Page.newUser_txt)
     assert driver.find_element(*home_Page.newUser_txt).text == "New User Signup!"
+    home_Page.login_w_correct_credentials(user_info)
+    accountInfo_Page.verify_and_delete_account(user_info)
 
 def test_AE005(browserInstance):
     driver = browserInstance
@@ -84,5 +86,7 @@ def test_AE005(browserInstance):
     driver.find_element(*home_Page.signUp_btn2).click()
     home_Page.wait_for_element_to_appear(home_Page.existing_email)
     assert driver.find_element(*home_Page.existing_email).text == "Email Address already exist!"
+    home_Page.login_w_correct_credentials(user_info)
+    accountInfo_Page.verify_and_delete_account(user_info)
 
 
